@@ -78,6 +78,10 @@ for file in `ls *.jpg`; do
         echo "${file} -> ${suji} & ${hyakusuji}"
         convert ${file} ${suji} # 原寸pngファイル
         convert ${suji} -resize 1024x1024 ${hyakusuji} # 縮小pngファイル
+
+        # Jpgはいらないので消す
+        echo "削除 ${file}"
+        rm $file
     fi
 
     # 次のループの前にsujiを初期化しておく
