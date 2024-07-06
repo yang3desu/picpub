@@ -40,8 +40,8 @@ fi
 
 if [ -f 000.jpg ]; then
     echo "000.jpgを２ページに分割 -> 001.jpg,002.jpg"
-    convert 000.jpg -crop 3658x5309+5115+453 001.jpg
-    convert 000.jpg -crop 3658x5309+392+453 002.jpg
+    magick 000.jpg -crop 3658x5309+5115+453 001.jpg
+    magick 000.jpg -crop 3658x5309+392+453 002.jpg
 fi
 
 # jpgファイルの数だけforをまわす
@@ -76,8 +76,8 @@ for file in `ls *.jpg`; do
        
         # ImageMagickで、画像を変換
         echo "${file} -> ${suji} & ${hyakusuji}"
-        convert ${file} ${suji} # 原寸pngファイル
-        convert ${suji} -resize 1024x1024 ${hyakusuji} # 縮小pngファイル
+        magick ${file} ${suji} # 原寸pngファイル
+        magick ${suji} -resize 1024x1024 ${hyakusuji} # 縮小pngファイル
 
         # Jpgはいらないので消す
         echo "削除 ${file}"
